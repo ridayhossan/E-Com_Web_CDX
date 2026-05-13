@@ -1,0 +1,2 @@
+import CategoryForm from '@/components/CategoryForm'; import { connectDB } from '@/lib/mongodb'; import Category from '@/models/Category'; import { serialize } from '@/lib/utils';
+export default async function EditCategory({params}:{params:{id:string}}){let category=null;try{await connectDB();category=serialize(await Category.findById(params.id));}catch{}return <main><h1 className="text-3xl font-black">Edit category</h1>{category?<CategoryForm category={category}/>:<p className="mt-6">Category not found or database unavailable.</p>}</main>}
