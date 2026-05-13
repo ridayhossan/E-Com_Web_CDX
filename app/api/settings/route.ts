@@ -1,0 +1,2 @@
+import { NextResponse } from 'next/server'; import { connectDB } from '@/lib/mongodb'; import SiteSettings from '@/models/SiteSettings'; import { requireAdmin } from '@/lib/auth';
+export async function POST(request: Request){requireAdmin();const f=await request.formData();const data=Object.fromEntries(f.entries());await connectDB();await SiteSettings.findOneAndUpdate({},data,{upsert:true,new:true,setDefaultsOnInsert:true});return NextResponse.redirect(new URL('/admin/settings',request.url));}

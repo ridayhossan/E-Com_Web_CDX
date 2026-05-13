@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --primary: #2563eb; --secondary: #f97316; }
+html { scroll-behavior: smooth; }
+body { background: #f8fafc; color: #0f172a; }
+.btn-primary { background: var(--primary); color: white; }
+.text-primary { color: var(--primary); }
+.bg-primary { background: var(--primary); }
+.border-primary { border-color: var(--primary); }
+.card { @apply rounded-3xl border border-slate-200 bg-white shadow-soft; }
+.input { @apply w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none transition focus:border-slate-400; }
+.label { @apply text-sm font-semibold text-slate-700; }

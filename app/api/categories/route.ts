@@ -1,0 +1,2 @@
+import { NextResponse } from 'next/server'; import { connectDB } from '@/lib/mongodb'; import Category from '@/models/Category'; import { requireAdmin } from '@/lib/auth'; import { slugify } from '@/lib/utils';
+export async function POST(request: Request){requireAdmin();const f=await request.formData();await connectDB();await Category.create({name:f.get('name'),slug:slugify(String(f.get('name'))),image:f.get('image'),description:f.get('description')});return NextResponse.redirect(new URL('/admin/categories',request.url));}
